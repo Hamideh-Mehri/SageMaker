@@ -1,11 +1,11 @@
 Process of training a Scikit-learn model by using the SageMaker Python SDK:
 
-1- Prepare dataset and upload it to Amazon S3.
+1- **Prepare dataset and upload it to Amazon S3**.
 
-2- Write Scikit-learn training script(script.py):
+2- **Write Scikit-learn training script**(script.py in this example):
 training script loads data from the input channels(there are two input channels in this example: `train` and `test`), configures training with hyperparameters, trains a model, and saves a model to model_dir so that it can be hosted later. Hyperparameters are passed to the script as arguments and can be retrieved with an `argparse.ArgumentParser instance`.
 
-we can access useful properties about the training environment through various environment variables. For example:
+we can access useful properties about the training environment through various **environment variables**. For example:
 
 `SM_MODEL_DIR`: A string representing the path to the directory to write model artifacts to. These artifacts are uploaded to S3 for model hosting.
 
@@ -15,7 +15,10 @@ we can access useful properties about the training environment through various e
 
 `SM_CHANNEL_TEST`: Same as above, but for the ‘test’ channel.
 
-In the training script we saved our trained model for deployment on SageMaker. We saved our model to a certain filesystem path called `model_dir`. This value is accessible through the environment variable `SM_MODEL_DIR`. we saved it as .joblib file at the end of training.  
+In the training script we **saved the trained model for deployment on SageMaker**. We saved our model to a certain filesystem path called `model_dir`. This value is accessible through the environment variable `SM_MODEL_DIR`. we saved it as .joblib file at the end of training.  
+
+3- **Creating an Estimator**: 
+
 
 3- Configure the training job by specifying the path of the training script(entry_point), S3 location of the data, 
 the compute resources needed (instance_type and instance_count), 
