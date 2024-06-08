@@ -15,6 +15,8 @@ we can access useful properties about the training environment through various e
 
 `SM_CHANNEL_TEST`: Same as above, but for the ‘test’ channel.
 
+In the training script we saved our trained model for deployment on SageMaker. We saved our model to a certain filesystem path called `model_dir`. This value is accessible through the environment variable `SM_MODEL_DIR`. we saved it as .joblib file at the end of training.  
+
 3- Configure the training job by specifying the path of the training script(entry_point), S3 location of the data, 
 the compute resources needed (instance_type and instance_count), 
 and the output path for the model artifacts(args.model_dir in script.py, the default value is specified by the 
