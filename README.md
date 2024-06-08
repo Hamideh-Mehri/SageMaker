@@ -17,11 +17,22 @@ we can access useful properties about the training environment through various *
 
 In the training script we **saved the trained model for deployment on SageMaker**. We saved our model to a certain filesystem path called `model_dir`. This value is accessible through the environment variable `SM_MODEL_DIR`. we saved it as .joblib file at the end of training.  
 
-3- **Creating an Estimator**: 
+3- **Configure the training job**:
+3-1 **Creating an Estimator**: We run Scikit-learn training scripts(scripts.py) on SageMaker by creating `SKLearn Estimators`(`SKLearn` imported from `sagemaker.sklearn.estimator`). We specified these arguments: the path of the training script(`entry_point`), the compute resources needed (`instance_type` and `instance_count`), and the passed hyperparameters(n_estimators and random_state). 
+
+3-2 **Calling the fit method**: We start our training script by calling `fit` on the `SKLearn Estimator`. The argument for the fit method is a dict from string channel names to s3 URIs.
+
+4- **Deploy an Endpoint from Model Data**: We deployed the model directly from model data(model artifact) in S3. Training Job model data is saved to .tar.gz files in S3, however if you have local data you want to deploy, you can prepare the data yourself.
+
+sklearn_model = SKLearnModel(name = model_name,
+                             model_data= the s3 path that model artifact is saved,
+                             role= ,
+                             entry_point=path to "script.py" file,
+                             framework_version="1.0-1")
+
+predictor = sklearn_model.deploy(instance_type="ml.c4.xlarge", initial_instance_count=1, 
+                                endpoint_name = endpoint_name)
 
 
-3- Configure the training job by specifying the path of the training script(entry_point), S3 location of the data, 
-the compute resources needed (instance_type and instance_count), 
-and the output path for the model artifacts(args.model_dir in script.py, the default value is specified by the 
-environment variable `SM_MODEL_DIR` which is  A string representing the path to the directory to write 
-model artifacts to. These artifacts are uploaded to S3 for model hosting.)
+
+
