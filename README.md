@@ -34,5 +34,10 @@ predictor = sklearn_model.deploy(instance_type="ml.c4.xlarge", initial_instance_
                                 endpoint_name = endpoint_name)
 
 
+The Scikit-learn Endpoint you create with `deploy` runs a SageMaker Scikit-learn model server. The SageMaker Scikit-learn model server loads your model by invoking a `model_fn function` that you must provide in your script. 
+
+more information: https://sagemaker.readthedocs.io/en/stable/frameworks/sklearn/using_sklearn.html
+
+
 
 
