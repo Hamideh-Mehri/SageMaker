@@ -1,5 +1,7 @@
 Process of training a Scikit-learn model by using the SageMaker Python SDK:
+
 1- Prepare dataset and upload it to Amazon S3.
+
 2- Write Scikit-learn training script(script.py):
 
 3- Configure the training job by specifying the path of the training script(entry_point), S3 location of the data, 
