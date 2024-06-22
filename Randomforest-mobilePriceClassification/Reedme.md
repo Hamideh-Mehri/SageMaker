@@ -7,9 +7,9 @@
   ### Client vs Resource
   `boto3` offers two distinct ways to interact with AWS services:
     
-       **Client**: provides low-level AWS service access that is closely aligned with the underlying AWS API.
+  **Client**: provides low-level AWS service access that is closely aligned with the underlying AWS API.
     
-       **Resource**: provides a higher-level, object oriented interface to AWS services, making it easier to use.
+  **Resource**: provides a higher-level, object oriented interface to AWS services, making it easier to use.
    
       S3 = boto3.client('s3')
       
