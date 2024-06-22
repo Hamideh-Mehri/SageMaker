@@ -1,4 +1,9 @@
 ## boto3 library
+* It is the `AWS SDK(Software Development Kit)` for Python.
+* It provides python developers with the ability to interact with nearly all aspects of AWS.
+* It abstracts the complexity of dealing with direct API calls and offers a more intuitive way to manage AWS resources programmatically.
+* 
+* 
 
 
 
