@@ -78,7 +78,7 @@ predictor = sklearn_model.deploy(instance_type="ml.c4.xlarge", initial_instance_
 
 
 The Scikit-learn Endpoint you create with `deploy` runs a SageMaker Scikit-learn model server. The SageMaker Scikit-learn model server loads your model by invoking a `model_fn function` that you must provide in your script. For deployment, `script.py` serves a slightly different function (compared to training). While the model is alreadty trained and saved, `script.py` is needed again as an `entry point` for the model deployment. This means it contains necessary functions that sagemaker requires to load the trained model and handle prediction requests. Specifically, it should define the following:
-* `model_fn`: Afunction to load the trained model. Sagemaker calls this function to deserialize the model artifact('model.joblib`) into a model object that can be used for prediction.
+* `model_fn`: A function to load the trained model. Sagemaker calls this function to deserialize the model artifact('model.joblib`) into a model object that can be used for prediction.
 * optionally, `input_fn`, `output_fn`, `predict_fn`: Functions to process input data before it reaches the model, manage the output from the model, and control the prediction process, respectively. These are necessary if the default behaviours aren't suitable for your model or data. 
 
 more information: https://sagemaker.readthedocs.io/en/stable/frameworks/sklearn/using_sklearn.html
