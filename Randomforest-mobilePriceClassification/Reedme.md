@@ -56,7 +56,14 @@ In the training script we **saved the trained model for deployment on SageMaker*
 
 3-2 **launching the training job by Calling the fit method**: We start our training script by calling `fit` on the `SKLearn Estimator`. The argument for the fit method is a dict from string channel names to s3 URIs. SageMaker sets `SM_CHANNEL_TRAIN` and `SM_CHANNEL_TEST` to the trainpath and testpath specified in the fit method. 
 
-It seems that SageMaker handle cases where users specify the full path, including the filename. It could automatically extract the directory part from the provided path and set the environment variables `SM_CHANNEL_TRAIN` and `SM_CHANNEL_TEST` accordingly. This means it would ignore the filename in the path and just use the directory for setting up the environment variables. When I sent the path without the filename it still works.
+It seems that SageMaker handle cases where users specify the full path, including the filename. It could automatically extract the directory part from the provided path and set the environment variables `SM_CHANNEL_TRAIN` and `SM_CHANNEL_TEST` accordingly. This means it would ignore the filename in the path and just use the directory for setting up the environment variables. When I sent the path without the filename it still works. If we want to specify the filenames something other than default values specified in `train-file` and `test-file` arguments , we can specify them in the hyperparameter in SKLearn: 
+
+ hyperparameters={
+                          "n_estimators": 100,
+                          "random_state": 0,
+                          "train-file": "train-V-1.csv",  # Specify the training file name
+                          "test-file": "test-V-1.csv"  
+                      },
 
 4- **Deploy an Endpoint from Model Data**: We deployed the model directly from model data(model artifact) in S3. Training Job model data is saved to .tar.gz files in S3, however if you have local data you want to deploy, you can prepare the data yourself.
 
