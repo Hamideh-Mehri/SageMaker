@@ -36,7 +36,7 @@
 1- **Prepare dataset and upload it to Amazon S3**.
 
 2- **Write Scikit-learn training script**(script.py in this example):
-training script loads data from the input channels(there are two input channels in this example: `train` and `test`), configures training with hyperparameters, trains a model, and saves a model to model_dir so that it can be hosted later. Hyperparameters are passed to the script as arguments and can be retrieved with an `argparse.ArgumentParser instance`.
+training script loads data from the input channels(there are two input channels in this example: `train` and `test`), configures training with hyperparameters, trains a model, and saves a model to model_dir so that it can be hosted later. Hyperparameters are passed to the script as arguments and can be retrieved with an `argparse.ArgumentParser instance`. 
 
 we can access useful properties about the training environment through various **environment variables**. For example:
 
@@ -52,7 +52,7 @@ In the training script we **saved the trained model for deployment on SageMaker*
 
 3- **Configure the training job**:
 
-3-1 **Initiating a training job by Creating an Estimator**: We run Scikit-learn training scripts(scripts.py) on SageMaker by creating `SKLearn Estimators`(`SKLearn` imported from `sagemaker.sklearn.estimator`). We specified these arguments: the path of the training script(`entry_point`), the compute resources needed (`instance_type` and `instance_count`), and the passed hyperparameters(n_estimators and random_state). 
+3-1 **Initiating a training job by Creating an Estimator**: We run Scikit-learn training scripts(scripts.py) on SageMaker by creating `SKLearn Estimators`(`SKLearn` imported from `sagemaker.sklearn.estimator`). We specified these arguments: the path of the training script(`entry_point`), the compute resources needed (`instance_type` and `instance_count`), and the passed hyperparameters(n_estimators and random_state). sagemaker passes these arguments to script.py as command-line arguments. 
 
 3-2 **launching the training job by Calling the fit method**: We start our training script by calling `fit` on the `SKLearn Estimator`. The argument for the fit method is a dict from string channel names to s3 URIs. SageMaker sets `SM_CHANNEL_TRAIN` and `SM_CHANNEL_TEST` to the trainpath and testpath specified in the fit method. 
 
