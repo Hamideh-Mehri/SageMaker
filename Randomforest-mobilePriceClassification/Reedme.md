@@ -52,9 +52,9 @@ In the training script we **saved the trained model for deployment on SageMaker*
 
 3- **Configure the training job**:
 
-3-1 **Creating an Estimator**: We run Scikit-learn training scripts(scripts.py) on SageMaker by creating `SKLearn Estimators`(`SKLearn` imported from `sagemaker.sklearn.estimator`). We specified these arguments: the path of the training script(`entry_point`), the compute resources needed (`instance_type` and `instance_count`), and the passed hyperparameters(n_estimators and random_state). 
+3-1 **Initiating a training job by Creating an Estimator**: We run Scikit-learn training scripts(scripts.py) on SageMaker by creating `SKLearn Estimators`(`SKLearn` imported from `sagemaker.sklearn.estimator`). We specified these arguments: the path of the training script(`entry_point`), the compute resources needed (`instance_type` and `instance_count`), and the passed hyperparameters(n_estimators and random_state). 
 
-3-2 **Calling the fit method**: We start our training script by calling `fit` on the `SKLearn Estimator`. The argument for the fit method is a dict from string channel names to s3 URIs.
+3-2 **launching the training job by Calling the fit method**: We start our training script by calling `fit` on the `SKLearn Estimator`. The argument for the fit method is a dict from string channel names to s3 URIs.
 
 4- **Deploy an Endpoint from Model Data**: We deployed the model directly from model data(model artifact) in S3. Training Job model data is saved to .tar.gz files in S3, however if you have local data you want to deploy, you can prepare the data yourself.
 
