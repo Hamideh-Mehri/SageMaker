@@ -2,8 +2,15 @@
 * It is the `AWS SDK(Software Development Kit)` for Python.
 * It provides python developers with the ability to interact with nearly all aspects of AWS.
 * It abstracts the complexity of dealing with direct API calls and offers a more intuitive way to manage AWS resources programmatically.
-* 
-* 
+* It allows you to write python scripts to automate tasks across various AWS services. 
+
+  ### Client vs Resource
+  - `boto3` offers two distinct ways to interact with AWS services:
+  - * **Client**: provides low-level AWS service access that is closely aligned with the underlying AWS API.
+    * **Resource**: provides a higher-level, object oriented interface to AWS services, making it easier to use.
+   
+      S3 = boto3.client('s3')
+      ddb = boto3.resource('dynamodb')  
 
 
 
