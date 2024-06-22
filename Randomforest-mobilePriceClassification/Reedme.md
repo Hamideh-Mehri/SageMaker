@@ -20,13 +20,13 @@
 * Why use sessions? sessions manage your authentication(credentials) and configuration(like region settings) when talking to AWS services. They are particularly useful when you need different configurations in a single application, such as using multiple regions or credential sets.
 * you can create a session if you need specific configurations:
 
-  import boto3
+    import boto3
   
-  session = boto3.session(region_name='...', profile_name='...')  #this session uses a specific AWS profile and region
+    session = boto3.session(region_name='...', profile_name='...')  #this session uses a specific AWS profile and region
 
-  s3 = session.client('s3')   #we use this session to create a client for s3
+    s3 = session.client('s3')   #we use this session to create a client for s3
 
-  ddb = session.resource('dynamodb')
+    ddb = session.resource('dynamodb')
 
 
 
