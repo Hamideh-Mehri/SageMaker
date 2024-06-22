@@ -61,7 +61,7 @@ It seems that SageMaker handle cases where users specify the full path, includin
  hyperparameters={
                           "n_estimators": 100,
                           "random_state": 0,
-                          "train-file": "train-V-1.csv",  # Specify the training file name
+                          "train-file": "train-V-1.csv", 
                           "test-file": "test-V-1.csv"  
                       },
 
