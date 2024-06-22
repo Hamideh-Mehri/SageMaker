@@ -10,6 +10,7 @@
     * **Resource**: provides a higher-level, object oriented interface to AWS services, making it easier to use.
    
       S3 = boto3.client('s3')
+      
       ddb = boto3.resource('dynamodb')  
 
 
